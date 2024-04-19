@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('/images/tv-image.jpg');
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+
+}
+
+header, footer {
+    display: flex;
+    justify-content: end;
+    background-color: #742020;
+    color: #fff;
+    padding: 20px;
+}
+
+.button-cac-movies {
+    justify-content: flex-start;
+}
+
+.button-cac-movies {
+    font-size: 2rem;
+    margin-right: auto; /* Pushes this button to the far left */
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/*Animacion del boton cac-movies*/
+.button-cac-movies:hover {
+    animation: buzz 0.2s infinite alternate; /* Buzz animation */
+}
+
+@keyframes buzz {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px); /* Adjust distance as needed */
+    }
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: calc(100vh - 140px); /* Restamos el alto del encabezado y el pie de página */
+}
+
+.titulo-main, .subtitulo-main {
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.contenido {
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+}
+
+/* Media query para diseño responsivo */
+@media screen and (min-width: 768px) {
+    main {
+        grid-template-columns: 1fr 3fr; /* 1/4 y 3/4 */
+    }
+
+    .contenido {
+        padding: 20px 40px;
+    }
+}
