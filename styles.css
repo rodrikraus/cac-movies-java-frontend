@@ -2,11 +2,12 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('/images/tv-image.jpg');
+    
+    background:
+    linear-gradient( rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0.7)), url(/images/tv-image.jpg);
     background-size: cover; /* Cover the entire viewport */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent image from repeating */
-
 }
 
 header, footer {
@@ -19,9 +20,6 @@ header, footer {
 
 .button-cac-movies {
     justify-content: flex-start;
-}
-
-.button-cac-movies {
     font-size: 2rem;
     margin-right: auto; /* Pushes this button to the far left */
     background-color: transparent;
@@ -57,7 +55,13 @@ main {
 }
 
 .contenido {
+    font-size: 2rem;
+    text-align: center;
     padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 footer {
