@@ -4,7 +4,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #1b1010;
     position: relative;
-    height: 280rem;
+    height: 220rem;
 }
 
 header {
@@ -20,6 +20,20 @@ header {
     min-height: 50px;
     z-index: 3;
     align-items: center;
+}
+
+.button-header {
+    padding: 8px 16px;
+    background-color: #3b1414;
+    /* Adjust button color as needed */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-header:hover {
+    background-color: #664343;
 }
 
 .background-image-container img {
@@ -40,7 +54,7 @@ header {
     font-size: 2rem;
     text-align: center;
     padding-top: 8vh;
-    min-height: 87vh;
+    min-height: 85vh;
     flex-direction: column;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
@@ -68,21 +82,6 @@ header {
 .button-buscar:hover {
     background-color: #3d3d3d;
     /* Adjust hover color as needed */
-}
-
-footer {
-    display: flex;
-    justify-content: end;
-    background-color: #742020;
-    color: #fff;
-    padding-top: 20px;
-    padding-right: 3rem;
-    padding-bottom: 20px;
-    width: 100vw;
-    text-align: center;
-    height: 5vh;
-    position: absolute;
-    bottom: 0;
 }
 
 .button-cac-movies {
@@ -191,4 +190,22 @@ footer {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.button-pie:hover {
+    background-color: #664343;
+}
+
+footer {
+    display: flex;
+    justify-content: end;
+    background-color: #742020;
+    color: #fff;
+    padding-right: 3rem;
+    width: 100vw;
+    text-align: center;
+    height: 7vh;
+    position: absolute;
+    bottom: 0;
+    align-items: center;
 }
