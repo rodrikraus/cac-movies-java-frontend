@@ -19,6 +19,7 @@ header {
     height: 8vh;
     min-height: 50px;
     z-index: 3;
+    align-items: center;
 }
 
 .background-image-container img {
