@@ -2,29 +2,64 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url(/images/tv-image.jpg);
-    background-size: cover; /* Cover the entire viewport */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent image from repeating */
-    width: 100%;
-    height: 100%;
+    position: relative;
+    height: 100rem;
 }
 
-header, footer {
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #742020;
+    color: #fff;
+    padding-left: 20px;
+    position: fixed;
+    width: 100vw;
+    padding: 20px;
+    height: 8vh;
+    min-height: 50px;
+
+}
+
+.background-image-container img {
+    width: 100vw;
+}
+
+.background-image-container {
+    position: absolute;
+    z-index: -1;
+}
+
+.contenido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 8vh;
+    min-height: 87vh;
+    flex-direction: column;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+footer {
     display: flex;
     justify-content: end;
     background-color: #742020;
     color: #fff;
-    padding: 20px;
-    min-width: 500px;
-    width: 100%;
-    height: 100%;
+    padding-top: 20px;  
+    padding-right: 3rem;
+    padding-bottom: 20px;
+    width: 100vw;
+    text-align: center;
+    height: 5vh;
+    position: absolute;
+    bottom: 0;
+
 }
 
 .button-cac-movies {
     justify-content: flex-start;
     font-size: 2rem;
-    margin-right: auto; /* Pushes this button to the far left */
     background-color: transparent;
     border: none;
     color: white;
@@ -45,42 +80,12 @@ header, footer {
     }
 }
 
-main {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    min-height: calc(100vh - 140px); /* Restamos el alto del encabezado y el pie de página */
+.buttons-header {
+    padding: 25px;
+    padding-right: 3rem;
 }
 
 .titulo-main, .subtitulo-main {
     color: #fff;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.contenido {
-    font-size: 2rem;
-    text-align: center;
-    padding: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 400px;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-
-}
-
-footer {
-    text-align: center;
-}
-
-/* Media query para diseño responsivo */
-@media screen and (min-width: 768px) {
-    main {
-        grid-template-columns: 1fr 3fr; /* 1/4 y 3/4 */
-    }
-
-    .contenido {
-        padding: 20px 40px;
-    }
 }
