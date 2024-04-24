@@ -46,6 +46,20 @@ header {
     filter: blur(5px);
 }
 
+.button-registrarse {
+    padding: 8px 16px;
+    background-color: #471010;
+    /* Adjust button color as needed */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-registrarse:hover {
+    background-color: #664343;
+}
+
 .contenido,
 .buscador {
     display: flex;
