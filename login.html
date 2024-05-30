@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - CAC-MOVIES</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <button class="button-cac-movies">Cac-Movies</button>
+        <div class="buttons-header">
+            <a href="index.html" class="button-header">Tendencias</a>
+            <a href="register.html" class="button-header">Registrarse</a>
+            <a href="login.html" class="button-header">Iniciar Sesión</a>
+        </div>
+    </header>
+    <main class="d-flex justify-content-center align-items-center vh-100">
+        <section class="login-form-container">
+            <h2 class="text-center">Iniciar Sesión</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" class="form-control" placeholder="Introduce tu correo electrónico">
+                    <div class="invalid-feedback" id="email-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" class="form-control" placeholder="Introduce tu contraseña">
+                    <div class="invalid-feedback" id="password-error"></div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <button class="button-pie">Términos y condiciones</button>
+        <button class="button-pie">Preguntas frecuentes</button>
+        <button class="button-pie">Ayuda</button>
+        <button class="button-pie">Administrador Peliculas</button>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
