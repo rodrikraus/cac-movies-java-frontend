@@ -38,6 +38,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchTendencias();
 
+    const registerForm = document.getElementById('register-form');
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Validar los campos
+            let isValid = true;
+
+            // Validar el campo de correo electrónico
+            if (!email) {
+                isValid = false;
+                document.getElementById('email-error').innerText = 'El correo electrónico es obligatorio';
+                document.getElementById('email').classList.add('is-invalid');
+            } else if (!validateEmail(email)) {
+                isValid = false;
+                document.getElementById('email-error').innerText = 'El correo electrónico no es válido';
+                document.getElementById('email').classList.add('is-invalid');
+            } else {
+                document.getElementById('email').classList.remove('is-invalid');
+                document.getElementById('email-error').innerText = '';
+            }
+
+            // Validar el campo de contraseña
+            if (!password) {
+                isValid = false;
+                document.getElementById('password-error').innerText = 'La contraseña es obligatoria';
+                document.getElementById('password').classList.add('is-invalid');
+            } else {
+                document.getElementById('password').classList.remove('is-invalid');
+                document.getElementById('password-error').innerText = '';
+            }
+
+            if (isValid) {
+                registrarUsuario(email, password);
+            }
+        });
+    }
+
+    function validateEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.[^<>()[\]\.,;:\s@"]{2,}))$/i;
+        return re.test(String(email).toLowerCase());
+    }
+
+    async function registrarUsuario(email, password) {
+        let campos = {};
+        campos.mail = email;
+        campos.contrasena = password;
+        let url = 'http://localhost:8080/api/registrarUsuario';
+
+        const peticion = await fetch(url,
+            {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(campos)
+            });
+
+        if(!peticion.ok) {
+            alert("Error al registrarse. Intente con un mail diferente.");
+        } else {
+            alert("Registro exitoso!");
+            window.location.href = 'index.html';
+        }
+    }
+
     const loginForm = document.getElementById('login-form');
 
     if (loginForm) {
@@ -75,14 +146,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (isValid) {
-                alert('Inicio de sesión exitoso');
-                // Logica para enviar datos
+                iniciarSesion(email, password);
             }
         });
     }
 
-    function validateEmail(email) {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.[^<>()[\]\.,;:\s@"]{2,}))$/i;
-        return re.test(String(email).toLowerCase());
+    async function iniciarSesion(email, password) {
+        let campos = {};
+        campos.mail = email;
+        campos.contrasena = password;
+        let url = 'http://localhost:8080/api/iniciarSesion';
+
+        const peticion = await fetch(url,
+            {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(campos)
+            });
+
+        if(!peticion.ok) {
+            alert("Inicio de sesión incorrecto.");  
+        } else {
+            alert("Inicio de sesión exitoso!");
+            window.location.href = 'index.html';
+        }
     }
 });
