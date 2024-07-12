@@ -37,20 +37,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fetchTendencias();
+   
+   
+    // Verificar si el usuario está logueado al cargar la página
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const loginLink = document.getElementById('login-link');
+    const userInfo = document.getElementById('user-info');
+    const userEmail = document.getElementById('user-email');
+    const logoutButton = document.getElementById('logout-button');
 
+    // Mostrar/ocultar elementos de usuario según el estado de login
+    function checkUserLoggedIn() {
+        if (usuario) {
+            loginLink.style.display = 'none';
+            userInfo.classList.remove('d-none');
+            userEmail.textContent = `Bienvenido, ${usuario.email}`;
+        } else {
+            loginLink.style.display = 'block';
+            userInfo.classList.add('d-none');
+        }
+    }
+
+    // Cerrar sesión
+    logoutButton.addEventListener('click', () => {
+        localStorage.removeItem('usuario');
+        window.location.href = 'index.html';
+    });
+
+    checkUserLoggedIn();
+
+    // Manejo de formulario de registro
     const registerForm = document.getElementById('register-form');
-
+    console.log("registerForm", registerForm)
     if (registerForm) {
+        console.log("entraa")
         registerForm.addEventListener('submit', function(event) {
             event.preventDefault();
-
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
-            // Validar los campos
             let isValid = true;
-
-            // Validar el campo de correo electrónico
+            
+            // Validación de email
             if (!email) {
                 isValid = false;
                 document.getElementById('email-error').innerText = 'El correo electrónico es obligatorio';
@@ -64,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('email-error').innerText = '';
             }
 
-            // Validar el campo de contraseña
+            // Validación de contraseña
             if (!password) {
                 isValid = false;
                 document.getElementById('password-error').innerText = 'La contraseña es obligatoria';
@@ -86,13 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function registrarUsuario(email, password) {
-        let campos = {};
-        campos.mail = email;
-        campos.contrasena = password;
+        console.log('Enviando datos al servidor...', email, password);
+        let campos = { mail: email, pass: password };
         let url = 'http://localhost:8080/api/registrarUsuario';
 
-        const peticion = await fetch(url,
-            {
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -101,27 +126,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(campos)
             });
 
-        if(!peticion.ok) {
-            alert("Error al registrarse. Intente con un mail diferente.");
-        } else {
-            alert("Registro exitoso!");
-            window.location.href = 'index.html';
-        }
+            console.log('Respuesta del servidor:', response);
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Error al registrarse:', errorData);
+                alert("Error al registrarse. Intente con un mail diferente.");
+            } else {
+                alert("Registro exitoso!");
+                window.location.href = 'index.html';
+            }
     }
 
+    // Manejo de formulario de inicio de sesión
     const loginForm = document.getElementById('login-form');
-
+    console.log("loginForm", loginForm)
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault();
-
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
-            // Validar los campos
             let isValid = true;
 
-            // Validar el campo de correo electrónico
+            // Validación de email
             if (!email) {
                 isValid = false;
                 document.getElementById('email-error').innerText = 'El correo electrónico es obligatorio';
@@ -135,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('email-error').innerText = '';
             }
 
-            // Validar el campo de contraseña
+            // Validación de contraseña
             if (!password) {
                 isValid = false;
                 document.getElementById('password-error').innerText = 'La contraseña es obligatoria';
@@ -152,25 +179,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function iniciarSesion(email, password) {
-        let campos = {};
-        campos.mail = email;
-        campos.contrasena = password;
+        let campos = { mail: email, pass: password };
         let url = 'http://localhost:8080/api/iniciarSesion';
 
-        const peticion = await fetch(url,
-            {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(campos)
-            });
+        const peticion = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(campos)
+        });
 
-        if(!peticion.ok) {
-            alert("Inicio de sesión incorrecto.");  
+        if (!peticion.ok) {
+            alert("Inicio de sesión incorrecto.");
         } else {
-            alert("Inicio de sesión exitoso!");
+            localStorage.setItem('usuario', JSON.stringify({ email: email }));
             window.location.href = 'index.html';
         }
     }

@@ -16,7 +16,7 @@ header {
     position: fixed;
     width: 100vw;
     padding: 20px;
-    height: 8vh;
+    height: 10vh;
     min-height: 50px;
     z-index: 3;
     align-items: center;
@@ -33,7 +33,6 @@ a:hover {
 .button-header {
     padding: 8px 16px;
     background-color: #3b1414;
-    /* Adjust button color as needed */
     color: white;
     border: none;
     border-radius: 4px;
@@ -61,7 +60,6 @@ a:hover {
 .button-registrarse {
     padding: 8px 16px;
     background-color: #471010;
-    /* Adjust button color as needed */
     color: white;
     border: none;
     border-radius: 4px;
@@ -92,39 +90,36 @@ a:hover {
     border-radius: 4px;
     margin-right: 8px;
     width: 200px;
-    /* Adjust width as needed */
 }
 
 .button-buscar {
     padding: 8px 16px;
     background-color: #742020;
-    /* Adjust button color as needed */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-/* Optional: Hover effect for the button */
 .button-buscar:hover {
     background-color: #3d3d3d;
-    /* Adjust hover color as needed */
 }
 
 .button-cac-movies {
     justify-content: flex-start;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background-color: transparent;
     border: none;
     color: white;
     cursor: pointer;
+    width: 15rem;
+    margin: 1rem;
 }
 
 /*Animacion del boton cac-movies*/
 .button-cac-movies:hover {
     animation: buzz 0.2s infinite alternate;
     color: white;
-    /* Buzz animation */
 }
 
 @keyframes buzz {
@@ -134,12 +129,31 @@ a:hover {
 
     100% {
         transform: translateY(-10px);
-        /* Adjust distance as needed */
     }
 }
-
+ 
 .buttons-header {
     padding-right: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.user-info-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 3rem;
+    margin-top: 10px; 
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+#user-email {
+    margin-right: 0.5rem;
 }
 
 .titulo-main,
@@ -213,7 +227,6 @@ a:hover {
 .button-pie {
     padding: 8px 16px;
     background-color: #3b1414;
-    /* Adjust button color as needed */
     color: white;
     border: none;
     border-radius: 4px;
