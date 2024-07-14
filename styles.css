@@ -39,6 +39,7 @@ a:hover {
     cursor: pointer;
     text-decoration: none;
     color: white;
+    margin: 0.1rem;
 }
 
 .button-header:hover {
@@ -112,7 +113,7 @@ a:hover {
     border: none;
     color: white;
     cursor: pointer;
-    width: 15rem;
+    width: 13rem;
     margin: 1rem;
 }
 
@@ -120,6 +121,10 @@ a:hover {
 .button-cac-movies:hover {
     animation: buzz 0.2s infinite alternate;
     color: white;
+}
+
+.button-cac-movies:focus {
+    outline: none;
 }
 
 @keyframes buzz {
@@ -169,16 +174,7 @@ a:hover {
     align-items: center;
     font-size: 2rem;
     text-align: center;
-    padding-top: 8vh;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.movie-container {
-    /*display: grid;*/
-    /*justify-content: center;*/
-    /*grid-template-columns: 13vw 13vw 13vw 13vw 13vw;*/
-    /*grid-row-gap: 150px;*/
-    /*grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));*/
 }
 
 .card {
@@ -231,6 +227,7 @@ a:hover {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin: 0.1rem;
 }
 
 .button-pie:hover {
@@ -244,10 +241,9 @@ footer {
     color: #fff;
     padding-right: 3rem;
     width: 100vw;
-    text-align: center;
     height: 7vh;
     position: absolute;
-    bottom: 0;
+    left: 0;
     align-items: center;
 }
 
